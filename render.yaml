@@ -8,6 +8,7 @@ services:
     buildCommand: ""
     startCommand: ""
     autoDeploy: true
+    postDeployCommand: "php artisan migrate --force --no-interaction"
     envVars:
       - key: APP_ENV
         value: production
