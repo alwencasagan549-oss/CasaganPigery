@@ -18,7 +18,7 @@
     <meta name="twitter:title" content="CasaganPigery" />
     <meta name="twitter:image" content="/assets/fb-icon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/logo.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="manifest" href="/manifest.json">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @viteReactRefresh

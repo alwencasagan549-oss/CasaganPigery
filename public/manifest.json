@@ -1,0 +1,33 @@
+{
+  "id": "com.casaganpigery.app",
+  "name": "CasaganPigery",
+  "short_name": "CasaganPigery",
+  "description": "Premium Farm Management System",
+  "icons": [
+    {
+      "src": "/assets/logo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F1EAD9",
+  "theme_color": "#2D4F1E",
+  "categories": ["business", "agriculture"]
+}
