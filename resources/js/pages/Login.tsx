@@ -31,7 +31,7 @@ const Login = () => {
       });
 
       if (response.ok) {
-        navigate("/admin");
+        window.location.href = "/admin";
       } else {
         const data = await response.json();
         setError(data.message || "Invalid credentials. Please try again.");

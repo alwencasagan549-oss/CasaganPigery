@@ -1,0 +1,14 @@
+node_modules
+vendor
+storage/logs/*.log
+.git
+.gitignore
+.env
+.htaccess
+deploy.sh
+deploy.ps1
+deploy.php
+docker-compose.yml
+README.md
+tests
+*.zip

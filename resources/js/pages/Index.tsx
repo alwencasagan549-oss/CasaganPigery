@@ -39,7 +39,7 @@ const Index = () => {
   useEffect(() => {
     const fetchPigs = async () => {
       try {
-        const res = await fetch("https://casaganpigery.ct.ws/pigs");
+        const res = await fetch("/pigs");
         if (res.ok) {
           const data = await res.json();
           const mapped = data

@@ -23,7 +23,7 @@ class SecureHeaders
         $response->headers->set('X-Content-Type-Options', 'nosniff');
         $response->headers->set('Referrer-Policy', 'no-referrer-when-downgrade');
         $response->headers->set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-        $response->headers->set('Content-Security-Policy', "default-src 'self' http://casaganpigery.ct.ws https://casaganpigery.ct.ws; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net http://casaganpigery.ct.ws https://casaganpigery.ct.ws; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com http://casaganpigery.ct.ws https://casaganpigery.ct.ws; img-src 'self' data: https: https://*.facebook.com http://casaganpigery.ct.ws https://casaganpigery.ct.ws; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.facebook.com http://casaganpigery.ct.ws https://casaganpigery.ct.ws; frame-src 'self' https://*.facebook.com https://*.facebook.net;");
+        $response->headers->set('Content-Security-Policy', "default-src 'self' https://casagan.free.je; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://connect.facebook.net https://casagan.free.je; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://casagan.free.je; img-src 'self' data: https: https://*.facebook.com https://casagan.free.je; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://*.facebook.com https://casagan.free.je; frame-src 'self' https://*.facebook.com https://*.facebook.net;");
 
         return $response;
     }
