@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/logo_circular.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/logo_circular.png">
+    <link rel="apple-touch-icon" href="/assets/logo_circular.png">
+    <link rel="manifest" href="/manifest.json">
     <title>CasaganPigery — Healthy Pigs from a Family Farm in Bulacan</title>
     <meta name="description" content="Browse available inahin, platining, and biik from CasaganPigery, a family-run piggery in Bulacan, Philippines. Honest pricing, healthy livestock." />
     <meta name="author" content="CasaganPigery" />
@@ -17,7 +20,6 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="CasaganPigery — Bulacan's Trusted Piggery" />
     <meta name="twitter:image" content="/og-image.png" />
-    <link rel="icon" type="image/x-icon" href="/CasaganPigery/favicon.ico">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @viteReactRefresh

@@ -1,0 +1,20 @@
+{
+  "name": "CasaganPigery",
+  "short_name": "Casagan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2D4F1E",
+  "icons": [
+    {
+      "src": "/assets/logo_circular.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/logo_circular.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
