@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   PiggyBank,
   Heart,
+  Baby,
   Stethoscope,
   Wheat,
   ShoppingCart,
@@ -26,7 +27,12 @@ export const AdminSidebar = ({ variant = "desktop" }: { variant?: "desktop" | "m
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch("/dashboard-stats");
+        const res = await fetch("/dashboard-stats", {
+          headers: {
+            "Accept": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+          }
+        });
         if (res.ok) setStats(await res.json());
       } catch (err) {
         console.error("Sidebar stats fetch failed", err);
@@ -59,6 +65,7 @@ export const AdminSidebar = ({ variant = "desktop" }: { variant?: "desktop" | "m
     { to: "/admin", label: "Dashboard", icon: LayoutDashboard, end: true },
     { to: "/admin/pigs", label: "Pig Inventory", icon: PiggyBank },
     { to: "/admin/breeding", label: "Breeding", icon: Heart },
+    { to: "/admin/weaning", label: "Weaning", icon: Baby },
     { to: "/admin/health", label: "Health", icon: Stethoscope },
     { to: "/admin/feed", label: "Feed & Nutrition", icon: Wheat },
     { to: "/admin/sales", label: "Sales", icon: ShoppingCart },

@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WeaningRecordController;
 
 Route::group([], function () {
     Route::post('/login', [AuthController::class, 'login']);
@@ -30,6 +31,7 @@ Route::group([], function () {
         Route::resource('pigs', PigController::class)->except(['index']);
         Route::resource('inquiries', InquiryController::class)->except(['store']);
         Route::resource('breeding-records', BreedingRecordController::class);
+        Route::resource('weaning-records', WeaningRecordController::class);
         Route::resource('health-records', HealthRecordController::class);
         Route::resource('feed-stocks', FeedStockController::class);
         Route::resource('customers', CustomerController::class);

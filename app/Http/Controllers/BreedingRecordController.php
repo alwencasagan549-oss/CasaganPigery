@@ -43,7 +43,20 @@ class BreedingRecordController extends Controller
             $data['expected_farrowing_date'] = $serviceDate->copy()->addDays(114)->toDateString();
         }
 
+        $oldStatus = $breedingRecord->status;
         $breedingRecord->update($data);
+
+        // Automatically create weaning record if marked as Farrowed
+        if ($oldStatus !== 'Farrowed' && $breedingRecord->status === 'Farrowed') {
+            \App\Models\WeaningRecord::create([
+                'pig_id' => $breedingRecord->pig_id,
+                'farrowing_date' => Carbon::now()->toDateString(),
+                'expected_weaning_date' => Carbon::now()->addDays(28)->toDateString(),
+                'status' => 'Active',
+                'litter_size' => $breedingRecord->litter_size,
+            ]);
+        }
+
         return response()->json($breedingRecord);
     }
 

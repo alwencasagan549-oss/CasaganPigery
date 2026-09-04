@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/admin/Dashboard";
 import PigInventory from "./pages/admin/PigInventory";
 import Breeding from "./pages/admin/Breeding";
+import Weaning from "./pages/admin/Weaning";
 import Health from "./pages/admin/Health";
 import Feed from "./pages/admin/Feed";
 import Sales from "./pages/admin/Sales";
@@ -43,6 +44,7 @@ const App = () => (
             <Route path="/admin" element={<Dashboard />} />
             <Route path="/admin/pigs" element={<PigInventory />} />
             <Route path="/admin/breeding" element={<Breeding />} />
+            <Route path="/admin/weaning" element={<Weaning />} />
             <Route path="/admin/health" element={<Health />} />
             <Route path="/admin/feed" element={<Feed />} />
             <Route path="/admin/sales" element={<Sales />} />

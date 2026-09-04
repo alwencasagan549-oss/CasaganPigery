@@ -6,8 +6,12 @@ import React, { useEffect, useState } from "react";
  */
 export const CoreProvider = ({ children }: { children: React.ReactNode }) => {
   const [verified, setVerified] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Initial loading splash
+    const _splash = setTimeout(() => setLoading(false), 2000);
+
     // Hidden developer signature validation
     // Signature: Alwen T. Casagan
     const _sig = [65, 108, 119, 101, 110, 32, 84, 46, 32, 67, 97, 115, 97, 103, 97, 110];
@@ -28,8 +32,28 @@ export const CoreProvider = ({ children }: { children: React.ReactNode }) => {
 
     // Run validation after 5 seconds to ensure footer is rendered
     const _t = setTimeout(validate, 5000);
-    return () => clearTimeout(_t);
+    return () => {
+      clearTimeout(_splash);
+      clearTimeout(_t);
+    };
   }, []);
+
+  if (loading) {
+    return (
+      <div className="fixed inset-0 z-[10000] bg-white flex flex-col items-center justify-center animate-fade-in">
+        <div className="relative">
+          <div className="size-24 rounded-full overflow-hidden shadow-2xl animate-pulse">
+            <img src="/assets/logo.png" className="w-full h-full object-cover" alt="Casagan Pigery" />
+          </div>
+          <div className="absolute -inset-4 border-2 border-leaf/20 border-t-leaf rounded-full animate-spin" />
+        </div>
+        <div className="mt-8 text-center">
+          <h1 className="font-display text-2xl font-bold text-leaf tracking-tight">CasaganPigery</h1>
+          <p className="text-earth/40 text-[10px] uppercase tracking-[0.3em] mt-2 font-medium">Loading Farm Resources</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!verified) {
     return (
