@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine On
+   
+   # Force HTTPS
+   RewriteCond %{HTTP:X-Forwarded-Proto} !https
+   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+   # Handle routing to public
+   RewriteRule ^(.*)$ public/$1 [L]
+
+   # Ensure bots can see the privacy policy
+   SetEnvIf User-Agent ^facebookexternalhit facebook_bot
+   SetEnvIf User-Agent ^Facebot facebook_bot
+
+</IfModule>
