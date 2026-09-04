@@ -37,8 +37,19 @@ RUN composer install --no-dev --no-scripts --no-autoloader --no-interaction
 # Copy application files
 COPY . .
 
-# Generate autoloader
-RUN composer dump-autoload --optimize
+# Create .env file from .env.example
+RUN cp .env.example .env
+
+# Generate APP_KEY
+RUN php artisan key:generate --force --no-interaction
+
+# Run Laravel post-install scripts
+RUN composer dump-autoload --optimize \
+    && php artisan package:discover --ansi \
+    && php artisan vendor:publish --tag=laravel-assets --ansi --force
+
+# Remove .env file (Render will provide env vars)
+RUN rm .env
 
 # Set proper permissions
 RUN chown -R www-data:www-data storage bootstrap/cache \
