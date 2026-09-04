@@ -1,0 +1,56 @@
+services:
+  - type: web
+    name: casagan-pigery
+    env: docker
+    region: singapore
+    plan: free
+    branch: main
+    buildCommand: ""
+    startCommand: ""
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        value: https://casagan-pigery.onrender.com
+      - key: LOG_CHANNEL
+        value: errorlog
+      - key: LOG_LEVEL
+        value: error
+      - key: SESSION_DRIVER
+        value: cookie
+      - key: CACHE_STORE
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: BROADCAST_CONNECTION
+        value: log
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DB_PORT
+        value: 5432
+      - key: DB_DATABASE
+        fromDatabase:
+          name: casagan-pigery-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: casagan-pigery-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: casagan-pigery-db
+          property: password
+      - key: DATABASE_URL
+        fromDatabase:
+          name: casagan-pigery-db
+          property: connectionUri
+
+  - type: pgsql
+    name: casagan-pigery-db
+    region: singapore
+    plan: free
+    initialDatabase: laravel
+    user: laravel
