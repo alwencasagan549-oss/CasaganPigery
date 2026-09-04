@@ -4,14 +4,14 @@
   "icons": [
     {
       "src": "/assets/logo.png",
-      "sizes": "192x192",
+      "sizes": "any",
       "type": "image/png"
     },
     {
       "src": "/assets/logo.png",
-      "sizes": "512x512",
+      "sizes": "any",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     }
   ],
   "start_url": "/",
