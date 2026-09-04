@@ -3,15 +3,16 @@
   "short_name": "CasaganPigery",
   "icons": [
     {
-      "src": "/assets/logo.png",
-      "sizes": "any",
-      "type": "image/png"
+      "src": "/assets/logo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "/assets/logo.png",
-      "sizes": "any",
+      "src": "/assets/logo-512x512.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     }
   ],
   "start_url": "/",
