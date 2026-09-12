@@ -11,7 +11,7 @@ services:
     postDeployCommand: "php artisan migrate --force --no-interaction"
     envVars:
       - key: APP_KEY
-        value: base64:REPLACE_WITH_GENERATED_KEY
+        value: base64:BW7FmAPphQtZ6MBHeDs9maV+7yb2k/VNR8TlxPttmds=
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
@@ -23,7 +23,7 @@ services:
       - key: LOG_LEVEL
         value: error
       - key: SESSION_DRIVER
-        value: cookie
+        value: file
       - key: CACHE_STORE
         value: file
       - key: QUEUE_CONNECTION

@@ -40,6 +40,34 @@ Route::group([], function () {
     });
 });
 
+Route::get('/health', function () {
+    $status = 'healthy';
+    $checks = [
+        'app' => true,
+        'database' => false,
+        'storage' => false,
+    ];
+
+    try {
+        \DB::connection()->getPdo();
+        $checks['database'] = true;
+    } catch (\Exception $e) {
+        $status = 'unhealthy';
+    }
+
+    try {
+        $checks['storage'] = is_writable(storage_path('app'));
+    } catch (\Exception $e) {
+        $status = 'unhealthy';
+    }
+
+    return response()->json([
+        'status' => $status,
+        'checks' => $checks,
+        'timestamp' => now()->toIso8601String(),
+    ], $status === 'healthy' ? 200 : 503);
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/db-test', function () {
         try {
@@ -53,34 +81,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/pig-count', function () {
         return 'Total Pigs in Database: '.\App\Models\Pig::count();
-    });
-
-    Route::get('/health', function () {
-        $status = 'healthy';
-        $checks = [
-            'app' => true,
-            'database' => false,
-            'storage' => false,
-        ];
-
-        try {
-            \DB::connection()->getPdo();
-            $checks['database'] = true;
-        } catch (\Exception $e) {
-            $status = 'unhealthy';
-        }
-
-        try {
-            $checks['storage'] = is_writable(storage_path('app'));
-        } catch (\Exception $e) {
-            $status = 'unhealthy';
-        }
-
-        return response()->json([
-            'status' => $status,
-            'checks' => $checks,
-            'timestamp' => now()->toIso8601String(),
-        ], $status === 'healthy' ? 200 : 503);
     });
 });
 

@@ -14,10 +14,6 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(\App\Http\Middleware\SecureHeaders::class);
         $middleware->append(\App\Http\Middleware\SanitizeInput::class);
     })
-    ->withTrustedProxy(
-        trustForwardedHeaders: true,
-        trustedProxies: ['10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16', '127.0.0.1', '::1']
-    )
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
