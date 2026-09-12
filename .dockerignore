@@ -3,7 +3,6 @@ vendor
 .git
 .gitignore
 .env
-.env.example
 storage/logs/*
 bootstrap/cache/*
 tests
