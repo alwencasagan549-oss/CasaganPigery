@@ -55,9 +55,6 @@ RUN npm install && npm run build
 # Remove .env file (Render will provide env vars)
 RUN rm .env
 
-# Cache configuration, routes, and views for production
-RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
-
 # Set proper permissions
 RUN chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 755 storage bootstrap/cache
