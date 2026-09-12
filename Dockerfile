@@ -4,6 +4,7 @@ FROM php:8.2-apache
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     curl \
+    pkg-config \
     libpng-dev \
     libxml2-dev \
     libzip-dev \
@@ -11,6 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libwebp-dev \
+    libonig-dev \
     unzip \
     nodejs \
     npm \
@@ -18,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Configure and install PHP extensions (including pgsql for PostgreSQL)
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
-    && docker-php-ext-install pdo_pgsql pdo_mysql gd zip xml bcmath opcache
+    && docker-php-ext-install pdo_pgsql pdo_mysql gd mbstring zip xml bcmath opcache
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
