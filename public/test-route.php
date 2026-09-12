@@ -11,7 +11,7 @@ try {
     $app = require __DIR__ . '/../bootstrap/app.php';
     $log['bootstrap'] = 'OK';
 
-    $router = $app->make(Illuminate\Contracts\Routing\Router::class);
+    $router = $app->make(Illuminate\Routing\Router::class);
     $log['router_created'] = 'OK';
 
     $request = Illuminate\Http\Request::create('/health', 'GET');
