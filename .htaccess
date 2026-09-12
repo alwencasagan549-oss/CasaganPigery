@@ -1,8 +1,9 @@
 <IfModule mod_rewrite.c>
    RewriteEngine On
    
-   # Force HTTPS
+   # Force HTTPS unless already behind a TLS-terminating proxy
    RewriteCond %{HTTPS} !=on
+   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
    # Redirect root to public/ subdirectory

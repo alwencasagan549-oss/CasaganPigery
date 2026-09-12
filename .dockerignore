@@ -2,6 +2,7 @@ node_modules
 vendor
 .git
 .gitignore
+.git
 .env
 storage/logs/*
 bootstrap/cache/*

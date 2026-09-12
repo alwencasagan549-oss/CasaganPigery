@@ -1,11 +1,10 @@
 FROM php:8.2-apache
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     curl \
     libpng-dev \
-    libonig-dev \
     libxml2-dev \
     libzip-dev \
     libpq-dev \
@@ -13,6 +12,8 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libwebp-dev \
     unzip \
+    nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure and install PHP extensions (including pgsql for PostgreSQL)
@@ -48,8 +49,14 @@ RUN composer dump-autoload --optimize \
     && php artisan package:discover --ansi \
     && php artisan vendor:publish --tag=laravel-assets --ansi --force
 
+# Install frontend dependencies and build assets
+RUN npm install && npm run build
+
 # Remove .env file (Render will provide env vars)
 RUN rm .env
+
+# Cache configuration, routes, and views for production
+RUN php artisan config:cache && php artisan route:cache && php artisan view:cache
 
 # Set proper permissions
 RUN chown -R www-data:www-data storage bootstrap/cache \

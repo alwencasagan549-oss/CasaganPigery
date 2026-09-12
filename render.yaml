@@ -10,12 +10,14 @@ services:
     autoDeploy: true
     postDeployCommand: "php artisan migrate --force --no-interaction"
     envVars:
+      - key: APP_KEY
+        value: base64:REPLACE_WITH_GENERATED_KEY
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: false
       - key: APP_URL
-        value: https://casagan-pigery.onrender.com
+        value: https://casaganpigery.cc.cd
       - key: LOG_CHANNEL
         value: errorlog
       - key: LOG_LEVEL
