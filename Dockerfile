@@ -62,9 +62,11 @@ RUN chown -R www-data:www-data storage bootstrap/cache \
 # Expose port 8080 (Render requirement)
 EXPOSE 8080
 
-# Update Apache to listen on port 8080
+# Configure Apache to serve Laravel from public/ and listen on port 8080
 RUN sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf \
-    && sed -i 's/:80/:8080/' /etc/apache2/sites-enabled/000-default.conf
+    && sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|' /etc/apache2/sites-enabled/000-default.conf \
+    && sed -i 's|<Directory /var/www/html>|<Directory /var/www/html/public>|' /etc/apache2/sites-enabled/000-default.conf \
+    && sed -i 's|:80>|:8080>|g' /etc/apache2/sites-enabled/000-default.conf
 
 # Start Apache in foreground
 CMD ["apache2-foreground"]
