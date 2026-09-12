@@ -11,14 +11,11 @@ try {
     $app = require __DIR__ . '/../bootstrap/app.php';
     $log['bootstrap'] = 'OK';
 
-    $kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+    $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
     $log['kernel_created'] = 'OK';
 
     $request = Illuminate\Http\Request::create('/health', 'GET');
     $log['request_created'] = 'OK';
-
-    $app->instance('request', $request);
-    $log['request_bound'] = 'OK';
 
     $response = $kernel->handle($request);
     $log['kernel_handled'] = 'OK';
